@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Markdown Previewer</title>
-    <style>
-        #markdown-input {
-            width: 100%;
-            height: 200px;
-            margin-bottom: 20px;
-        }
-        #preview {
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
 </head>
 <body>
     <h1>Live Markdown Previewer</h1>
@@ -33,11 +23,17 @@
                 const markdownText = input.value;
                 const htmlOutput = convert_markdown(markdownText);
                 preview.innerHTML = htmlOutput;
+                
+                // Initialize highlight.js after the content is updated
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
             });
         }
 
         run();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
 </body>
 </html>
 
