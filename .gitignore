@@ -1,0 +1,29 @@
+# Rust related
+/target
+**/*.rs.bk
+
+# WebAssembly related
+/pkg/
+*.wasm
+*.js
+
+# wasm-pack related
+wasm-pack.log
+
+# IDE related
+.idea/
+.vscode/
+*.swp
+*~
+
+# Node.js dependencies (if you are using npm or other tools)
+/node_modules
+/dist
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Cargo
+/Cargo.lock
+

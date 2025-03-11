@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Markdown Previewer</title>
+    <style>
+        #markdown-input {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        #preview {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Markdown Previewer</h1>
+    <textarea id="markdown-input" placeholder="Type Markdown here..."></textarea>
+    <div id="preview"></div>
+
+    <script type="module">
+        import init, { convert_markdown } from './pkg/live_markdown_previewer.js';
+
+        async function run() {
+            await init();
+            const input = document.getElementById('markdown-input');
+            const preview = document.getElementById('preview');
+
+            input.addEventListener('input', () => {
+                const markdownText = input.value;
+                const htmlOutput = convert_markdown(markdownText);
+                preview.innerHTML = htmlOutput;
+            });
+        }
+
+        run();
+    </script>
+</body>
+</html>
+
